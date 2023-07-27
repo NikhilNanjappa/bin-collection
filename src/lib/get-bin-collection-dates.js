@@ -35,5 +35,26 @@ function getBinCollectionDates(year) {
   return dates
 }
 
-const dates = getBinCollectionDates(2023) 
-console.log(dates)
+const dates = getBinCollectionDates(2023)
+
+// Green bin - group dates by month
+const groupedDates = dates.green.reduce((acc, date) => {
+  const dt = DateTime.fromISO(date)
+
+  if (!acc[dt.monthLong]) {
+    acc[dt.monthLong] = []
+  }
+
+  acc[dt.monthLong].push(date)
+
+  return acc
+}, {})
+
+// Print grouped dates
+Object.entries(groupedDates).forEach(([month, monthDates]) => {
+  console.log(month)
+  
+  monthDates.forEach(date => {
+    console.log('- ' + date) 
+  })
+})
