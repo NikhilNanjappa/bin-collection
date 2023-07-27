@@ -11,4 +11,28 @@
       <h1 class="govuk-heading-xl">{{ pageData.message }}</h1>
     </div>
   </div>
+
+  <div class="govuk-tabs" data-module="govuk-tabs">
+    <ul class="govuk-tabs__list">
+      <!-- Tab for each month -->
+      {% for month in groupedDates %}
+        <li class="govuk-tabs__list-item">
+          <a class="govuk-tabs__tab" href="#{{ month }}">
+            {{ month }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  
+    <!-- Tab panel for each month -->
+    {% for month, dates in groupedDates %}
+      <div class="govuk-tabs__panel" id="{{ month }}">
+        <ul class="govuk-list">
+          {% for date in dates %}
+            <li>{{ date }}</li>  
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+  </div>
 {% endblock %}
