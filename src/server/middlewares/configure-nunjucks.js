@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { DateTime } from 'luxon';
 import { configure, render } from 'nunjucks';
 import configRoutes from '../../config-routes';
 
@@ -6,6 +7,11 @@ import configRoutes from '../../config-routes';
 const addNunjucksFilters = (env) => {
   env.addGlobal('routes', configRoutes);
   env.addGlobal('joinarrays', (array1, array2) => array1.concat(array2));
+
+  env.addFilter('formatDate', (date, inputFormat = 'yyyy-MM-dd', outputFormat = 'd LLLL yyyy') => {
+    const dt = DateTime.fromFormat(date, inputFormat)
+    return dt.toFormat(outputFormat)
+  });
 };
 
 // SETUP

@@ -7,32 +7,38 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-      <span class="govuk-caption-xl" id="sub-heading">{{ t("dashboard:h1") }}</span>
-      <h1 class="govuk-heading-xl">{{ pageData.message }}</h1>
-    </div>
-  </div>
+      <h1 class="govuk-heading-xl">{{ t("dashboard:h1") }}</h1>
 
-  <div class="govuk-tabs" data-module="govuk-tabs">
-    <ul class="govuk-tabs__list">
-      <!-- Tab for each month -->
-      {% for month in groupedDates %}
-        <li class="govuk-tabs__list-item">
-          <a class="govuk-tabs__tab" href="#{{ month }}">
-            {{ month }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  
-    <!-- Tab panel for each month -->
-    {% for month, dates in groupedDates %}
-      <div class="govuk-tabs__panel" id="{{ month }}">
-        <ul class="govuk-list">
-          {% for date in dates %}
-            <li>{{ date }}</li>  
+      <h2 class="govuk-heading-m">
+        Your next bin: {{ pageData.nextBin.readable if pageData.nextBin.readable else pageData.nextBin.date | formatDate }} ({{ pageData.nextBin.color }})
+      </h2>
+
+      <br><br>
+
+      <div class="govuk-tabs" data-module="govuk-tabs">
+        <ul class="govuk-tabs__list">
+          <!-- Tab for each month -->
+          {% for month, dateObj in pageData.groupedDates %}
+            <li class="govuk-tabs__list-item">
+              <a class="govuk-tabs__tab" href="#{{ month }}">
+                {{ month.substr(0, 3) }}
+              </a>
+            </li>
           {% endfor %}
         </ul>
+      
+        <!-- Tab panel for each month -->
+        {% for month, dateObj in pageData.groupedDates %}
+          <div class="govuk-tabs__panel" id="{{ month }}">
+            {% for date in dateObj %}
+              <strong class="govuk-tag bg-{{date.color}} govuk-!-font-size-48 govuk-!-margin-right-5">
+                {{ date.date | formatDate('yyyy-MM-dd', 'd') }}
+              </strong>
+            {% endfor %}
+          </div>
+        {% endfor %}
       </div>
-    {% endfor %}
+
+    </div>
   </div>
 {% endblock %}
