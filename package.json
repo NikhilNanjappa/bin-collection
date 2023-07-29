@@ -1,8 +1,8 @@
 {
-	"name": "govuk-express-template",
+	"name": "bin-collection",
 	"version": "1.0.0",
-	"description": "GOVUK express template",
-	"author": "Team",
+	"description": "App to show bin collection dates",
+	"author": "kainikhil@gmail.com",
 	"license": "ISC",
 	"engines": {
 		"node": "18.x"

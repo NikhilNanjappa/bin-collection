@@ -1,4 +1,4 @@
-# govuk-express-template
+# bin-collection
 
 ## Install dependencies and start
 
