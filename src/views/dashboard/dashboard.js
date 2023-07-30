@@ -1,3 +1,5 @@
+import { DateTime } from 'luxon'
+
 import { handleServiceResponse } from '../../lib/error-handler';
 import { getNextCollection, getBinCollectionDates } from '../../lib/get-bin-collection-dates';
 
@@ -7,6 +9,7 @@ const get = async (req, res) => {
 
     return res.render('dashboard', {
       pageData: {
+        currentMonth: DateTime.local().toFormat('LLLL'),
         groupedDates,
         nextBin: getNextCollection(groupedDates) 
       },

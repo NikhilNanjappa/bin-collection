@@ -9,9 +9,14 @@
     <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">{{ t("dashboard:h1") }}</h1>
 
-      <h2 class="govuk-heading-m">
-        Your next bin: {{ pageData.nextBin.readable if pageData.nextBin.readable else pageData.nextBin.date | formatDate }} ({{ pageData.nextBin.color }})
-      </h2>
+      <div class="govuk-panel govuk-panel--confirmation bg-{{pageData.nextBin.color}}">
+        <h1 class="govuk-panel__title">
+          Your next bin
+        </h1>
+        <div class="govuk-panel__body">
+          {{ pageData.nextBin.readable if pageData.nextBin.readable else pageData.nextBin.date | formatDate }} ({{ pageData.nextBin.color }})
+        </div>
+      </div>
 
       <br><br>
 
@@ -19,7 +24,7 @@
         <ul class="govuk-tabs__list">
           <!-- Tab for each month -->
           {% for month, dateObj in pageData.groupedDates %}
-            <li class="govuk-tabs__list-item">
+            <li class="govuk-tabs__list-item {% if month == pageData.currentMonth %}govuk-tabs__list-item--selected{% endif %}">
               <a class="govuk-tabs__tab" href="#{{ month }}">
                 {{ month.substr(0, 3) }}
               </a>

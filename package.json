@@ -9,7 +9,8 @@
 	},
 	"scripts": {
 		"build": "rm -rf dist && webpack --mode production",
-		"start": "npm run build && nodemon -e js,njk,html ./src/server/index.js",
+		"start": "node ./src/server/index.js",
+		"start:watch": "npm run build && nodemon -e js,njk,html ./src/server/index.js",
 		"test:lint": "./node_modules/.bin/eslint .",
 		"test:lint:fix": "./node_modules/.bin/eslint . --fix",
 		"test:unit": "LOGLEVEL=fatal NODE_ENV= jest --coverage"

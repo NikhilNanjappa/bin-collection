@@ -1,4 +1,4 @@
-const { DateTime } = require('luxon')
+import { DateTime } from 'luxon'
 
 // Gets the next collection dates for each bins
 function getNextCollectionDates(groupedDates) {
