@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "bin-collection",
+  "builds": [
+    { "src": "src/server/app.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "src/server/app.js" }
+  ]
+}
