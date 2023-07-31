@@ -42,5 +42,8 @@ app.use(configureLocals);
 // Routes
 app.use('/', viewsRoutes);
 app.all('*', (req, res) => res.redirect(configRoutes.pageNotFound));
+app.use((err, req, res, next) => {
+  res.status(500).send(err.stack)
+})
 
 module.exports = app;
