@@ -5,8 +5,8 @@ const nodeExternals = require('webpack-node-externals');
 module.exports = {
   entry: { main: './src/index.js' },
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'src/public'),
+    filename: 'js/[name].bundle.js',
   },
   resolve: {
     alias: {
@@ -43,7 +43,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: 'css/style.css',
     }),
   ],
 };
