@@ -44,7 +44,6 @@
 		"mini-css-extract-plugin": "2.7.6",
 		"nunjucks": "3.2.4",
 		"sass-loader": "13.2.2",
-		"serve-favicon": "2.5.0",
 		"webpack": "5.82.1",
 		"webpack-node-externals": "3.0.0"
 	},
