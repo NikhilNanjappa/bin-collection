@@ -12,7 +12,6 @@ import configureLangFiles from './middlewares/configure-lang-files';
 import configureCsrf from './middlewares/configure-csrf';
 import configureNunjucks from './middlewares/configure-nunjucks';
 
-import configRoutes from '../config-routes';
 import viewsRoutes from '../routes';
 import serverRoutes from './routes';
 
@@ -41,7 +40,6 @@ app.use(configureLocals);
 
 // Routes
 app.use('/', viewsRoutes);
-app.all('*', (req, res) => res.redirect(configRoutes.pageNotFound));
 app.use((err, req, res, next) => {
   res.status(500).send(err.stack)
 })
