@@ -1,5 +1,4 @@
 import express from 'express';
-import favicon from 'serve-favicon';
 
 export default (app) => {
   app.use('/images/favicon.ico', express.static('node_modules/govuk-frontend/govuk/assets/images/favicon.ico'));

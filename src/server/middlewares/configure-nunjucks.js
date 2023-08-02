@@ -53,7 +53,7 @@ const getViews = () => {
   const dirContents = readDirectory();
   dirContents
     .map((viewsDir) => viewsDir.name)
-    .filter((dirName) => !dirName.includes('layout.njk'))
+    .filter((dirName) => !dirName.includes('.njk'))
     .forEach((viewsDir) => parseDirectories(appViews, viewsDir));
 
   return appViews;
