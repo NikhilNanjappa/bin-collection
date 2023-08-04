@@ -46,8 +46,6 @@ const getViews = () => {
   const appViews = [
     'src/views/',
     'src/views/layout.njk',
-    'node_modules/govuk-frontend/govuk/',
-    'node_modules/govuk-frontend/govuk/components/',
   ];
 
   const dirContents = readDirectory();

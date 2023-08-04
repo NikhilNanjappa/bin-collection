@@ -4,12 +4,14 @@ import { handleServiceResponse } from '../../lib/error-handler';
 import { getNextCollection, getBinCollectionDates } from '../../lib/get-bin-collection-dates';
 
 const get = async (req, res) => {
+  const today = DateTime.local().toFormat('yyyy-MM-dd')
+
   try {
     const groupedDates = getBinCollectionDates()
 
     return res.render('dashboard', {
       pageData: {
-        currentMonth: DateTime.local().toFormat('LLLL'),
+        today,
         groupedDates,
         nextBin: getNextCollection(groupedDates) 
       },
