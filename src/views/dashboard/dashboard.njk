@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+    <div class="govuk-grid-column-ful">
       <h1 class="govuk-heading-xl">{{ t("dashboard:h1") }}</h1>
 
       <div class="govuk-panel govuk-panel--confirmation bg-{{pageData.nextBin.color}}">
@@ -20,9 +20,44 @@
 
       <br><br>
 
-      <div class="govuk-tabs" data-module="govuk-tabs">
+      {% for month, dateObj in pageData.groupedDates %}
+      <div class="govuk-grid-column-one-half">
+        <div class="card">
+          <h2>{{ month }}</h2>
+          <div class="card-inner-panel">
+            {% for date in dateObj %}
+              <strong class="govuk-tag bg-{{date.color}} govuk-!-font-size-48 govuk-!-margin-5">
+                {{ date.date | formatDate('yyyy-MM-dd', 'd') }}
+              </strong>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-default">
+        {% for month, dateObj in pageData.groupedDates %}
+          <div class="govuk-accordion__section {% if month == pageData.currentMonth %}govuk-accordion__section--expanded{% endif %}">
+            <div class="govuk-accordion__section-header">
+              <h2 class="govuk-accordion__section-heading">
+                <span class="govuk-accordion__section-button" id="{{ month }}">
+                  {{ month.substr(0, 3) }}
+                </span>
+              </h2>
+            </div>
+            <div id="accordion-default-content-{{ month }}" class="govuk-accordion__section-content" aria-labelledby="{{ month }}">
+              {% for date in dateObj %}
+                <strong class="govuk-tag bg-{{date.color}} govuk-!-font-size-48 govuk-!-margin-5">
+                  {{ date.date | formatDate('yyyy-MM-dd', 'd') }}
+                </strong>
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      <!-- <div class="govuk-tabs" data-module="govuk-tabs">
         <ul class="govuk-tabs__list">
-          <!-- Tab for each month -->
           {% for month, dateObj in pageData.groupedDates %}
             <li class="govuk-tabs__list-item {% if month == pageData.currentMonth %}govuk-tabs__list-item--selected{% endif %}">
               <a class="govuk-tabs__tab" href="#{{ month }}">
@@ -32,7 +67,6 @@
           {% endfor %}
         </ul>
       
-        <!-- Tab panel for each month -->
         {% for month, dateObj in pageData.groupedDates %}
           <div class="govuk-tabs__panel" id="{{ month }}">
             {% for date in dateObj %}
@@ -42,7 +76,7 @@
             {% endfor %}
           </div>
         {% endfor %}
-      </div>
+      </div> -->
 
     </div>
   </div>

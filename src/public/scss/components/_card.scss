@@ -22,53 +22,60 @@
       border-left-width: 3px;
     }
   }
+
   @media screen and (max-width: 960px) {
     .card, .card.double, .card.half {
       width: calc(100% * (1 / 2) - 0px - 20px);
     }
   }
 }
-.card{
-  margin-bottom:20px;
-  border:1px solid $govuk-border-colour;
-  //padding:15px;
+
+.card {
+  margin-bottom: 20px;
   box-sizing: border-box;
-  .govuk-button--secondary{
-    margin-bottom:0px;
+
+  .govuk-button--secondary {
+    margin-bottom: 0px;
     background: #fff;
     color: #10813e;
     border: 2px solid #10813e;
     box-shadow:none;
   }
+
   h2 {
-    background:govuk-colour("light-grey");
+    background: #dde0e2;
     padding: .8em 1em;
     margin: 0;
   }
+
   a {
     h2, h3, h4 {
-      color: $govuk-link-colour;
+      color: #1d70b8;
     }
-    &:hover{
+
+    &:hover {
       h2, h3, h4 {
-        color: $govuk-link-hover-colour;
+        color: #003078;
       }
     }
-    &:visited{
+
+    &:visited {
       h2, h3, h4 {
-        color: $govuk-link-visited-colour;
+        color: #1d70b8;
       }
     }
-    &:focus{
+
+    &:focus {
       h2, h3, h4 {
-        background:$govuk-focus-colour;
-        color: $govuk-focus-text-colour;
-        box-shadow: 0 4px 0 $govuk-focus-text-colour;
+        background: #fd0;
+        color: #0b0c0c;
+        box-shadow: 0 4px 0 #0b0c0c;
       }
     }
   }
 
   .card-inner-panel {
+    background-color: #f8f8f8;
     padding: 1.1em;
   }
 }

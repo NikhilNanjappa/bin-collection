@@ -8,10 +8,7 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: [
-    '@dwp/eslint-config-base',
-    'plugin:cypress/recommended',
-  ],
+  extends: [],
   overrides: [
     {
       files: [
@@ -31,6 +28,7 @@ module.exports = {
     'no-param-reassign': [2, { props: false }],
   },
   parserOptions: {
+    sourceType: 'module',
     ecmaVersion: '2020',
   },
 };
