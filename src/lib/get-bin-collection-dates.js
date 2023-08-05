@@ -55,6 +55,7 @@ function getNextCollection(groupedDates) {
   return {
     date: nextDate.toISODate(),
     color: nextColor,
+    daysLeft: Math.ceil(nextDate.diff(today, 'days').days),
     readable: nextDate.hasSame(today, 'day')
       ? 'Today'
       : nextDate.hasSame(tomorrow, 'day')

@@ -25,6 +25,7 @@
 		"@babel/plugin-transform-runtime": "7.22.5",
 		"@babel/preset-env": "7.22.5",
 		"@babel/register": "7.21.0",
+		"@vercel/analytics": "^1.0.1",
 		"babel-loader": "8.3.0",
 		"cookie-parser": "1.4.6",
 		"cors": "2.8.5",
