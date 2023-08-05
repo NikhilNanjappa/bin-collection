@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { inject } from '@vercel/analytics';
+import { inject } from '../lib/vercel-analytics.cjs';
 
 import configureI18n from './middlewares/configure-i18n';
 import configureHeaders from './middlewares/configure-headers';
