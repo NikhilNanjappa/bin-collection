@@ -14,7 +14,7 @@
           Next bin in {{ pageData.nextBin.daysLeft }} day(s)
         </h1>
         <div class="govuk-panel__body">
-          {{ pageData.nextBin.readable if pageData.nextBin.readable else pageData.nextBin.date | formatDate }} ({{ pageData.nextBin.color }})
+          <strong>{{ pageData.nextBin.readable if pageData.nextBin.readable else pageData.nextBin.date | formatDate }} ({{ pageData.nextBin.color }})</strong>
         </div>
       </div>
 
