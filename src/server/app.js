@@ -1,7 +1,6 @@
 import express from 'express';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import { inject } from '../lib/vercel-analytics.cjs';
 
 import configureI18n from './middlewares/configure-i18n';
 import configureHeaders from './middlewares/configure-headers';
@@ -19,7 +18,6 @@ import serverRoutes from './routes';
 const app = express();
 app.set('trust proxy', 1);
 app.set('port', process.env.PORT || '3000');
-inject();
 
 app.use(configureI18n());
 app.use(configureSession());
