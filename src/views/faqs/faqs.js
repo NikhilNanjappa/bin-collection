@@ -1,5 +1,5 @@
 const get = async (req, res) => {
-  res.render('service-unavailable');
+  res.render('faqs');
 };
 
 export { get as default };

@@ -45,7 +45,7 @@ function getNextCollection(groupedDates) {
     for (let item of groupedDates[month]) {
       const dt = DateTime.fromISO(item.date)
 
-      if (dt > today && (!nextDate || dt < nextDate)) {
+      if (dt >= today && (!nextDate || dt < nextDate)) {
         nextDate = dt
         nextColor = item.color
       }
