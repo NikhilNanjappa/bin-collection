@@ -45,22 +45,26 @@ function getNextCollection(groupedDates) {
     for (let item of groupedDates[month]) {
       const dt = DateTime.fromISO(item.date)
 
-      if (dt >= today && (!nextDate || dt < nextDate)) {
-        nextDate = dt
-        nextColor = item.color
+      if (dt.hasSame(today, 'day')) {
+        return {
+          date: today.toFormat('d LLLL yyyy'),
+          color: item.color,
+          daysLeft: 0,
+          readable: 'Today'
+        }
+      }
+
+      if (dt > today && (!nextDate || dt < nextDate)) {
+        return {
+          date: dt.toFormat('d LLLL yyyy'),
+          color: item.color,
+          daysLeft: Math.ceil(dt.diff(today, 'days').days),
+          readable: dt.hasSame(tomorrow, 'day')
+            ? 'Tomorrow'
+            : null
+        }
       }
     }
-  }
-
-  return {
-    date: nextDate.toISODate(),
-    color: nextColor,
-    daysLeft: Math.ceil(nextDate.diff(today, 'days').days),
-    readable: nextDate.hasSame(today, 'day')
-      ? 'Today'
-      : nextDate.hasSame(tomorrow, 'day')
-        ? 'Tomorrow'
-        : null
   }
 }
 
